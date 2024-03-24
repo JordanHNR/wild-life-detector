@@ -33,8 +33,8 @@ from typing import List
 
 
 DATASET_COLUMNS = ["image", "taxonomy", "bboxes", 
-					"seq_num_frames", "seq_id",
-					"width", "height"]
+				   "seq_num_frames", "seq_id",
+				   "width", "height"]
 LILA_REPOSITORY = "society-ethics/lila_camera_traps"
 TRUST_REMOTE_CODE = True
 
@@ -52,10 +52,10 @@ def load_lila_datasets(names: List[str]) -> List[datasets.arrow_dataset.Dataset]
     
 	try:
 		datasets_list = [datasets.load_dataset(LILA_REPOSITORY, 
-												name, 
-												split="train",
-												trust_remote_code=True)
-						for name in names]
+											   name, 
+											   split="train",
+											   trust_remote_code=True)
+						 for name in names]
 		return datasets_list
 	except:
 		return []
