@@ -52,7 +52,7 @@ def load_lila_datasets(names: List[str]) -> List[datasets.arrow_dataset.Dataset]
     
     try:
         datasets_list = [datasets.load_dataset(LILA_REPOSITORY, 
-										       name, 
+											   name, 
 											   split="train",
 											   trust_remote_code=True)
 						 for name in names]
