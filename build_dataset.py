@@ -19,7 +19,7 @@ Functions:
 	* split_dataset: Assign a set (train, validation or test) to each 
 	data, given specified ratios for each set.
 
-Data are from HuggingFace downloaded from HuggingFace.
+Data are downloaded from HuggingFace.
 https://huggingface.co/datasets/society-ethics/lila_camera_traps
 """
 
