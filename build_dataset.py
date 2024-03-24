@@ -3,21 +3,21 @@ Define constants and functions to build an object detection dataset from
 several camera traps datasets (LILA Camera Traps).
 
 Constants:
-    * DATASETS_COLUMNS (List[str]): List of dataset's features name.
-    * LILA_REPOSITORY (str): LILA Camera Traps dataset repository name.
-    * TRUST_REMOTE_CODE (bool): Whether or not to allow LILA dataset 
-    using scripts.
+	* DATASETS_COLUMNS (List[str]): List of dataset's features name.
+	* LILA_REPOSITORY (str): LILA Camera Traps dataset repository name.
+	* TRUST_REMOTE_CODE (bool): Whether or not to allow LILA dataset 
+	using scripts.
 
 Functions:
-    * load_lila_datasets: Load a list of LILA camera traps datasets from 
-    HuggingFace.
-    * restructure_datasets: Apply changes on datasets columns to unify
-    datasets structures.
-    * concatenate_datasets: Concatenate the input list of datasets into 
-    a single dataframe.
-    * filter_species: Filter out unspecified species from input dataset.
-    * split_dataset: Assign a set (train, validation or test) to each 
-    data, given specified ratios for each set.
+	* load_lila_datasets: Load a list of LILA camera traps datasets from 
+	HuggingFace.
+	* restructure_datasets: Apply changes on datasets columns to unify
+	datasets structures.
+	* concatenate_datasets: Concatenate the input list of datasets into 
+	a single dataframe.
+	* filter_species: Filter out unspecified species from input dataset.
+	* split_dataset: Assign a set (train, validation or test) to each 
+	data, given specified ratios for each set.
 
 Data are from HuggingFace downloaded from HuggingFace.
 https://huggingface.co/datasets/society-ethics/lila_camera_traps
@@ -33,32 +33,32 @@ from typing import List
 
 
 DATASET_COLUMNS = ["image", "taxonomy", "bboxes", 
-                   "seq_num_frames", "seq_id",
-                   "width", "height"]
+					"seq_num_frames", "seq_id",
+					"width", "height"]
 LILA_REPOSITORY = "society-ethics/lila_camera_traps"
 TRUST_REMOTE_CODE = True
 
 
 def load_lila_datasets(names: List[str]) -> List[datasets.arrow_dataset.Dataset]:
-    """
-    Load a list of LILA camera traps datasets from HuggingFace.
-    An empty list will be returned if an error occurs during loading. 
+	"""
+	Load a list of LILA camera traps datasets from HuggingFace.
+	An empty list will be returned if an error occurs during loading. 
 
-    Args:
-        * names: List of dataset names.
-    Return:
-        * datasets_list: List of loaded datasets.
-    """
+	Args:
+		* names: List of dataset names.
+	Return:
+		* datasets_list: List of loaded datasets.
+	"""
     
-    try:
-        datasets_list = [datasets.load_dataset(LILA_REPOSITORY, 
-											   name, 
-											   split="train",
-											   trust_remote_code=True)
-						 for name in names]
-        return datasets_list
-    except:
-        return []
+	try:
+		datasets_list = [datasets.load_dataset(LILA_REPOSITORY, 
+												name, 
+												split="train",
+												trust_remote_code=True)
+						for name in names]
+		return datasets_list
+	except:
+		return []
 
 
 def restructure_datasets(datasets_list: List[datasets.arrow_dataset.Dataset],
